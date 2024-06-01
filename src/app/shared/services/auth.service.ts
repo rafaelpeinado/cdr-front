@@ -4,6 +4,7 @@ import { Observable, take, tap } from 'rxjs';
 import { urlsConfig } from '../urls.config';
 import { HttpClient } from '@angular/common/http';
 import { LoginResponse } from '../models/login-response.model';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    // private jwtHelper: JwtHelperService,
+    private jwtHelper: JwtHelperService,
   ) { }
 
   public authenticate(loginUserDTO: LoginUserDTO): Observable<LoginResponse> {
@@ -27,7 +28,7 @@ export class AuthService {
 
   public isAuthenticated(): boolean {
     const token = this.getAccessToken();
-    return true;
+    return !this.jwtHelper.isTokenExpired(token);
   }
 
   public logout() {
