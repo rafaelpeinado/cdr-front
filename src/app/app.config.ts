@@ -5,6 +5,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export function getAccessToken() {
   const authService = inject(AuthService);
@@ -22,8 +23,10 @@ export const appConfig: ApplicationConfig = {
       JwtModule.forRoot({
         config: {
           tokenGetter: getAccessToken,
+          disallowedRoutes: ['login'],
         },
       }),
     ),
+    provideAnimationsAsync(),
   ]
 };
