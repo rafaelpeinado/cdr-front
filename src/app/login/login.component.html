@@ -1,21 +1,24 @@
-<div class="test">
-  <div class="main">
-    {{ currentScreenSize }}
-    <form [formGroup]="formGroup">
-      <div>Login</div>
-      <div>
-        <mat-form-field appearance="outline">
-          <mat-label>CPF</mat-label>
-          <input matInput type="text" id="cpf" placeholder="CPF" formControlName="cpf">
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Senha</mat-label>
-          <input matInput type="password" id="password" placeholder="Senha" formControlName="password">
-        </mat-form-field>
-      </div>
-      <div>
-        <button mat-flat-button color="primary" (click)="login()">Login</button>
-      </div>
-    </form>
-  </div>
+<div class="main">
+  <form class="form-signin" [formGroup]="formGroup">
+    <div>
+      <h1>Login</h1>
+    </div>
+    <div>
+      <mat-form-field [hideRequiredMarker]="true">
+        <mat-label>CPF</mat-label>
+        <input matInput type="text" id="cpf" placeholder="CPF" formControlName="cpf">
+      </mat-form-field>
+      <mat-form-field [hideRequiredMarker]="true">
+        <mat-label>Senha</mat-label>
+        <input matInput type="password" id="password" placeholder="Senha" formControlName="password">
+      </mat-form-field>
+    </div>
+    <div class="forgot-password">
+      <a>Esqueceu sua senha?</a>
+    </div>
+    <div class="button-signin">
+      <button mat-flat-button color="primary" (click)="login()">Entrar</button>
+    </div>
+
+  </form>
 </div>

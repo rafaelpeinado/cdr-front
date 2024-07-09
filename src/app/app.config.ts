@@ -6,6 +6,7 @@ import { routes } from './app.routes';
 import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 export function getAccessToken() {
   const authService = inject(AuthService);
@@ -14,6 +15,7 @@ export function getAccessToken() {
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
     provideRouter(routes),
     provideHttpClient(
       withFetch(),
